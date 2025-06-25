@@ -1,5 +1,4 @@
-CREATE DATABASE portafolio_db;
-USE portafolio_db;
+USE paola_montes_db2;
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,

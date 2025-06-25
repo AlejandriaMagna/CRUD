@@ -1,5 +1,4 @@
 <?php
-include 'auth.php';
 include 'db.php';
 $result = $conn->query("SELECT * FROM proyectos ORDER BY created_at DESC");
 ?>
@@ -12,9 +11,10 @@ $result = $conn->query("SELECT * FROM proyectos ORDER BY created_at DESC");
 </head>
 <body>
 <div class="container my-4">
-    <a href="add.php" class="btn btn-success mb-3">+ Agregar Proyecto</a>
-    <a href="logout.php" class="btn btn-outline-danger mb-3 ms-2">Cerrar sesión</a>
     <h2>Proyectos</h2>
+    <br>
+    
+    <a href="login.php" class="btn btn-primary mb-3">Ingresar como administrador</a>
     <div class="row">
         <?php while($row = $result->fetch_assoc()): ?>
         <div class="col-md-4 mb-4">
@@ -27,13 +27,38 @@ $result = $conn->query("SELECT * FROM proyectos ORDER BY created_at DESC");
                 <div class="card-footer">
                     <a href="<?= htmlspecialchars($row['url_github']) ?>" class="btn btn-primary btn-sm" target="_blank">GitHub</a>
                     <a href="<?= htmlspecialchars($row['url_produccion']) ?>" class="btn btn-info btn-sm" target="_blank">Enlace</a>
-                    <a href="edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro?')">Eliminar</a>
                 </div>
             </div>
         </div>
         <?php endwhile; ?>
     </div>
 </div>
+<h2 class="text-center text-primary fw-bold mb-4">Regístrate como usuario</h2>
+
+<form id="registroForm" action="procesar.php" method="POST" onsubmit="return validarFormulario()" class="p-4 rounded shadow bg-white">
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Nombre completo</label>
+    <input type="text" name="nombre" class="form-control" placeholder="Nombre completo" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Correo electrónico</label>
+    <input type="email" name="correo" class="form-control" placeholder="Correo electrónico" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Contraseña</label>
+    <input type="password" name="clave" class="form-control" placeholder="Contraseña (mínimo 6 caracteres)" required>
+  </div>
+  <div class="mb-4">
+    <label class="form-label fw-semibold">Repetir contraseña</label>
+    <input type="password" name="clave2" class="form-control" placeholder="Repetir contraseña" required>
+  </div>
+  <div class="d-grid">
+    <button type="submit" class="btn btn-success btn-lg">Registrarse</button>
+  </div>
+</form>
+
+<script src="script.js"></script>
+
+
 </body>
 </html>

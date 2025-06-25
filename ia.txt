@@ -1,0 +1,5 @@
+Copilot Integrado de Visual Studio Code.
+Promp: Requiero que mis proyectos se visualicen en una vista pública y lo que va en mi formulario quede en una vista administrador. 
+Promp: Necesito estilos coloridos que demuestren formalidad para un cliente en Bootstrap.
+Promp:Necesito los mismos estilos para el formulario.
+Promp: Por qué el botón enviar me lleva a la vista administrador, en vez del index.php.
